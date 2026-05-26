@@ -15,4 +15,4 @@ developed as a portfolio project while studying for AZ-204.
 ## Tech Stack
 - Language: C# / .NET 8
 - Cloud: Microsoft Azure
-- IaC: Bicep
+- IaC: Terraform

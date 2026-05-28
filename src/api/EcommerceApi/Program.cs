@@ -1,4 +1,5 @@
 using Azure.Identity;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,9 @@ builder.Services.AddSingleton(sp => {
     var config = sp.GetRequiredService<IConfiguration>();
     return new Microsoft.Azure.Cosmos.CosmosClient(config["CosmosConnectionString"]);
 });
+
+builder.Services.AddDbContext<EcommerceApi.Data.OrdersDbContext>(options =>
+    options.UseSqlServer(builder.Configuration["SqlConnectionString"]));
 
 var app = builder.Build();
 app.UseSwagger();

@@ -9,5 +9,4 @@ public class Product
     public string Category { get; set; } = string.Empty;  // Partition Key
     public int StockQuantity { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
 }

@@ -1,5 +1,6 @@
 using Azure.Identity;
 using Microsoft.EntityFrameworkCore;
+using Scalar.AspNetCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,13 +9,7 @@ var keyVaultUri = new Uri($"https://{builder.Configuration["KeyVaultName"]}.vaul
 builder.Configuration.AddAzureKeyVault(keyVaultUri, new DefaultAzureCredential());
 
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-
-// Only add Swagger during runtime, not during design-time (EF migrations)
-if (!Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")?.Equals("DesignTime", StringComparison.OrdinalIgnoreCase) ?? true)
-{
-    builder.Services.AddSwaggerGen();
-}
+builder.Services.AddOpenApi();
 
 // Register the Cosmos DB client as a singleton service.
 builder.Services.AddSingleton(sp => {
@@ -27,11 +22,9 @@ builder.Services.AddDbContext<EcommerceApi.Data.OrdersDbContext>(options =>
 
 var app = builder.Build();
 
-if (!Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")?.Equals("DesignTime", StringComparison.OrdinalIgnoreCase) ?? true)
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.MapOpenApi();
+app.MapScalarApiReference();
+
 app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();

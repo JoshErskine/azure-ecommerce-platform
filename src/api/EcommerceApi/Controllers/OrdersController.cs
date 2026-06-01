@@ -10,10 +10,12 @@ namespace EcommerceApi.Controllers;
 public class OrdersController : ControllerBase
 {
     private readonly OrdersDbContext _db;
+    private readonly IConfiguration _configuration;
 
-    public OrdersController(OrdersDbContext db)
+    public OrdersController(OrdersDbContext db, IConfiguration configuration)
     {
         _db = db;
+        _configuration = configuration;
     }
 
     // GET api/orders
@@ -39,6 +41,16 @@ public class OrdersController : ControllerBase
     {
         _db.Orders.Add(order);
         await _db.SaveChangesAsync();
+        
+        // Publish event to Service Bus
+        var connectionString = _configuration["ServiceBusConnectionString"];
+        await using var client = new Azure.Messaging.ServiceBus.ServiceBusClient(connectionString);
+        var sender = client.CreateSender("orders-queue");
+        var messageBody = System.Text.Json.JsonSerializer.Serialize(order);
+        var message = new Azure.Messaging.ServiceBus.ServiceBusMessage(messageBody);
+        await sender.SendMessageAsync(message);
+
         return CreatedAtAction(nameof(GetById), new { id = order.Id }, order);
+
     }
 }

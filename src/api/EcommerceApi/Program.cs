@@ -20,6 +20,9 @@ builder.Services.AddSingleton(sp => {
 builder.Services.AddDbContext<EcommerceApi.Data.OrdersDbContext>(options =>
     options.UseSqlServer(builder.Configuration["SqlConnectionString"]));
 
+builder.Services.AddApplicationInsightsTelemetry(options =>
+    options.ConnectionString = builder.Configuration["AppInsightsConnectionString"]);
+
 var app = builder.Build();
 
 app.MapOpenApi();

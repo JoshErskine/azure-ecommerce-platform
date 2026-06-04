@@ -1,5 +1,6 @@
 using EcommerceApi.Data;
 using EcommerceApi.Models;
+using Microsoft.ApplicationInsights;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,11 +12,13 @@ public class OrdersController : ControllerBase
 {
     private readonly OrdersDbContext _db;
     private readonly IConfiguration _configuration;
+    private readonly TelemetryClient _telemetry;
 
-    public OrdersController(OrdersDbContext db, IConfiguration configuration)
+    public OrdersController(OrdersDbContext db, IConfiguration configuration, TelemetryClient telemetry)
     {
         _db = db;
         _configuration = configuration;
+        _telemetry = telemetry;
     }
 
     // GET api/orders
@@ -41,6 +44,13 @@ public class OrdersController : ControllerBase
     {
         _db.Orders.Add(order);
         await _db.SaveChangesAsync();
+        
+        _telemetry.TrackEvent("OrderPlaced", new Dictionary<string, string>
+        {
+            { "OrderId", order.Id.ToString() },
+            { "CustomerId", order.CustomerId },
+            { "TotalPrice", order.TotalPrice.ToString() }
+        });
         
         // Publish event to Service Bus
         var connectionString = _configuration["ServiceBusConnectionString"];

@@ -4,7 +4,7 @@ A cloud-native e-commerce backend built on Microsoft Azure,
 developed as a portfolio project while studying for AZ-204.
 
 ## Architecture
-(diagram coming soon)
+<img width="561" height="558" alt="Image" src="https://github.com/user-attachments/assets/b1a77ec8-d606-49af-9d24-b5f1e255371a" />
 
 ## Projects
 - **Project 1** — Product & Order REST API (App Service, Cosmos DB, Azure SQL, Key Vault)

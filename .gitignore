@@ -436,7 +436,6 @@ FodyWeavers.xsd
 *.tfstate
 *.tfstate.backup
 *.tfplan
-.terraform.lock.hcl
 terraform.tfvars     
 override.tf
 override.tf.json

@@ -40,3 +40,7 @@ output "principal_id" {
 output "default_hostname" {
   value = azurerm_linux_web_app.main.default_hostname
 }
+
+output "service_plan_id" {
+  value = azurerm_service_plan.main.id
+}

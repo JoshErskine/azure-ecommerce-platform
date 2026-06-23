@@ -21,6 +21,6 @@ resource "azurerm_api_management_api" "ecommerce" {
 
   import {
     content_format = "openapi-link"
-    content_value  = "https://${var.app_service_hostname}/swagger/v1/swagger.json"
+    content_value  = "https://${var.app_service_hostname}/openapi/v1.json"
   }
 }

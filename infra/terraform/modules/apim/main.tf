@@ -19,8 +19,4 @@ resource "azurerm_api_management_api" "ecommerce" {
   protocols           = ["https"]
   service_url         = "https://${var.app_service_hostname}"
 
-  import {
-    content_format = "openapi-link"
-    content_value  = "https://${var.app_service_hostname}/openapi/v1.json"
-  }
 }

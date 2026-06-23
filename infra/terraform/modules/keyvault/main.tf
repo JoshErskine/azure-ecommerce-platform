@@ -13,6 +13,13 @@ resource "azurerm_key_vault" "main" {
   tags = var.tags
 }
 
+# Grant the Terraform executor permission to create/manage secrets
+resource "azurerm_role_assignment" "terraform_kv" {
+  scope                = azurerm_key_vault.main.id
+  role_definition_name = "Key Vault Secrets Officer"
+  principal_id         = data.azurerm_client_config.current.object_id
+}
+
 # Grant the App Service managed identity GET/LIST on secrets
 resource "azurerm_role_assignment" "app_service_kv" {
   scope                = azurerm_key_vault.main.id
@@ -26,7 +33,7 @@ resource "azurerm_key_vault_secret" "cosmos" {
   value        = var.cosmos_connection_string
   key_vault_id = azurerm_key_vault.main.id
 
-  depends_on = [azurerm_role_assignment.app_service_kv]
+  depends_on = [azurerm_role_assignment.terraform_kv, azurerm_role_assignment.app_service_kv]
 }
 
 resource "azurerm_key_vault_secret" "sql" {

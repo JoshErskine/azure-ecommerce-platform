@@ -430,3 +430,12 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+*.tfplan
+terraform.tfvars     
+override.tf
+override.tf.json

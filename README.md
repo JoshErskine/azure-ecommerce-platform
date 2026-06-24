@@ -1,15 +1,15 @@
 # Azure E-Commerce Platform
-<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/31511987-3776-4869-993e-90deac4154d8" />
-
-<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/5594d4ff-ea92-4243-8f25-057e44213fe1" />
-
-<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/167b022b-dcd5-4359-b554-d5892f4af998" />
-
-<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/d46bbaa9-7620-4576-8b1a-d0ace1949181" />
 
 ## Overview
 
 This project demonstrates cloud-native architecture on Microsoft Azure - including event-driven systems, secrets management, observability, and fully automated infrastructure provisioning via Terraform and GitHub Actions. This was built alongside my studies for the AZ-204 exam and covers real architectural patterns used in enterprise systems.
+
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/31511987-3776-4869-993e-90deac4154d8" />
+
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/5594d4ff-ea92-4243-8f25-057e44213fe1" />
+
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/d46bbaa9-7620-4576-8b1a-d0ace1949181" />
+
 
 ## Architecture
 <img width="561" height="558" alt="Azure E-Commerce Architecture Diagram" src="https://github.com/user-attachments/assets/b1a77ec8-d606-49af-9d24-b5f1e255371a" />

@@ -1,5 +1,11 @@
 # Azure E-Commerce Platform
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/31511987-3776-4869-993e-90deac4154d8" />
 
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/5594d4ff-ea92-4243-8f25-057e44213fe1" />
+
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/167b022b-dcd5-4359-b554-d5892f4af998" />
+
+<img width="500" height="300" alt="Image" src="https://github.com/user-attachments/assets/d46bbaa9-7620-4576-8b1a-d0ace1949181" />
 
 ## Overview
 

@@ -62,13 +62,13 @@ azure-ecommerce-platform/
 │   │       └── Data/           # EF Core DbContext
 │   └── functions/              # Azure Functions
 │       └── OrderProcessor/     # ProcessOrder + DeadLetterMonitor
-├── infra/
-│   └── terraform/              # Full IaC — all Azure resources
-│       ├── main.tf
-│       ├── variables.tf
-│       ├── outputs.tf
-│       └── modules/            # Cosmos, SQL, Key Vault, APIM etc.
-└── 
+└── infra/
+    └── terraform/              # Full IaC — all Azure resources
+        ├── main.tf
+        ├── variables.tf
+        ├── outputs.tf
+        └── modules/            # Cosmos, SQL, Key Vault, APIM etc.
+
 ```
  
 ---

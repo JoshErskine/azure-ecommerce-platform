@@ -1,4 +1,4 @@
 environment = "dev"
-location    = "westeurope"
+location    = "northeurope"
 prefix      = "je-ecom"
 
